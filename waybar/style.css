@@ -1,0 +1,62 @@
+/* ── Cookie Clicker — self-contained waybar CSS ──────────────────────────────
+   Import this at the top of your waybar style.css:
+     @import "/absolute/path/to/waybar_cookie_clicker/waybar/style.css";
+   No other changes needed — all base rules are included here.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Base shape: matches the pill style of the rest of the bar */
+#custom-cookie-clicker,
+#custom-cookie-s0,
+#custom-cookie-s1,
+#custom-cookie-s2,
+#custom-cookie-s3,
+#custom-cookie-s4,
+#custom-cookie-s5,
+#custom-cookie-s6,
+#custom-cookie-s7 {
+  border-radius: 10px;
+  border: 1px solid alpha(@secondary, 0.55);
+  background-color: @surface_container;
+  color: @secondary;
+  margin: 0px 2px;
+  padding: 0px 12px 0px 8px;
+  box-shadow: 0px 1px 4px alpha(@shadow, 0.35);
+}
+
+/* Main button: pulse when an upgrade is available */
+#custom-cookie-clicker.has-upgrade {
+  border-color: alpha(@primary, 0.85);
+  color: @primary;
+  animation: cookie-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes cookie-pulse {
+  from { opacity: 1;    }
+  to   { opacity: 0.65; }
+}
+
+/* Slot: affordable — highlighted in primary accent */
+#custom-cookie-s0.affordable,
+#custom-cookie-s1.affordable,
+#custom-cookie-s2.affordable,
+#custom-cookie-s3.affordable,
+#custom-cookie-s4.affordable,
+#custom-cookie-s5.affordable,
+#custom-cookie-s6.affordable,
+#custom-cookie-s7.affordable {
+  border-color: alpha(@primary, 0.7);
+  color: @primary;
+}
+
+/* Slot: locked — dimmed */
+#custom-cookie-s0.locked,
+#custom-cookie-s1.locked,
+#custom-cookie-s2.locked,
+#custom-cookie-s3.locked,
+#custom-cookie-s4.locked,
+#custom-cookie-s5.locked,
+#custom-cookie-s6.locked,
+#custom-cookie-s7.locked {
+  opacity: 0.5;
+}
+

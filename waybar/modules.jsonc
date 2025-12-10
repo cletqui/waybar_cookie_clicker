@@ -1,0 +1,115 @@
+// Cookie Clicker waybar module definitions — annotated template
+// ─────────────────────────────────────────────────────────────────────────────
+// modules.json  is the ready-to-use version (uses $HOME, waybar expands it).
+// This file (modules.jsonc) is the same thing with comments explaining each
+// field — kept for documentation purposes.
+//
+// Quick setup:
+//   1. cargo build --release
+//   2. In config.jsonc, add to "include":
+//        "~/path/to/waybar_cookie_clicker/waybar/modules.json"
+//   3. Add "group/group-cookie" to modules-right.
+//   4. In style.css, add at the top:
+//        @import "/absolute/path/to/waybar_cookie_clicker/waybar/style.css";
+//
+// modules.json assumes the repo lives at $HOME/projects/waybar_cookie_clicker.
+// If your clone is elsewhere, edit the exec/on-click paths in modules.json.
+//
+// Signal 9 (SIGRTMIN+9) is used for instant refresh after clicks.
+// Change all "signal": 9 and SIGRTMIN+9 if it conflicts with another module.
+
+{
+  "group/group-cookie": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 250,
+      "transition-left-to-right": false,
+      "click-to-reveal": false
+    },
+    "modules": [
+      "custom/cookie-clicker",
+      "custom/cookie-s0",
+      "custom/cookie-s1",
+      "custom/cookie-s2",
+      "custom/cookie-s3",
+      "custom/cookie-s4",
+      "custom/cookie-s5",
+      "custom/cookie-s6",
+      "custom/cookie-s7"
+    ]
+  },
+
+  "custom/cookie-clicker": {
+    "exec": "REPO/waybar_cookie_clicker.sh show",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh click; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+
+  "custom/cookie-s0": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 0",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 0; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s1": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 1",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 1; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s2": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 2",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 2; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s3": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 3",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 3; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s4": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 4",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 4; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s5": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 5",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 5; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s6": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 6",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 6; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  },
+  "custom/cookie-s7": {
+    "exec": "REPO/waybar_cookie_clicker.sh slot 7",
+    "exec-on-event": true,
+    "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 7; pkill -SIGRTMIN+9 waybar",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 9
+  }
+}

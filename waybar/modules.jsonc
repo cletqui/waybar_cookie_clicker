@@ -24,7 +24,7 @@
     "drawer": {
       "transition-duration": 250,
       "transition-left-to-right": false,
-      "click-to-reveal": false
+      "click-to-reveal": false,
     },
     "modules": [
       "custom/cookie-clicker",
@@ -35,8 +35,8 @@
       "custom/cookie-s4",
       "custom/cookie-s5",
       "custom/cookie-s6",
-      "custom/cookie-s7"
-    ]
+      "custom/cookie-s7",
+    ],
   },
 
   "custom/cookie-clicker": {
@@ -45,7 +45,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh click; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
 
   "custom/cookie-s0": {
@@ -54,7 +54,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 0; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s1": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 1",
@@ -62,7 +62,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 1; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s2": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 2",
@@ -70,7 +70,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 2; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s3": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 3",
@@ -78,7 +78,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 3; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s4": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 4",
@@ -86,7 +86,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 4; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s5": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 5",
@@ -94,7 +94,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 5; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s6": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 6",
@@ -102,7 +102,7 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 6; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
+    "signal": 9,
   },
   "custom/cookie-s7": {
     "exec": "REPO/waybar_cookie_clicker.sh slot 7",
@@ -110,6 +110,6 @@
     "on-click": "REPO/waybar_cookie_clicker.sh buy-slot 7; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
-    "signal": 9
-  }
+    "signal": 9,
+  },
 }

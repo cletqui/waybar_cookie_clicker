@@ -8,8 +8,8 @@ BINARY="$REAL_DIR/../target/release/waybar_cookie_clicker"
 STATE="$REAL_DIR/../state.json"
 
 if [ ! -x "$BINARY" ]; then
-    BINARY="waybar_cookie_clicker"
-    STATE="$HOME/.local/share/waybar_cookie_clicker/state.json"
+  BINARY="waybar_cookie_clicker"
+  STATE="$HOME/.local/share/waybar_cookie_clicker/state.json"
 fi
 
 exec "$BINARY" --state "$STATE" "$@"

@@ -9,7 +9,10 @@ use game::{display, engine};
 
 fn main() {
     let cli = Cli::parse();
-    let path = cli.state.clone().unwrap_or_else(storage::default_state_path);
+    let path = cli
+        .state
+        .clone()
+        .unwrap_or_else(storage::default_state_path);
     let mut state = storage::load(&path);
 
     engine::tick(&mut state);
@@ -23,6 +26,10 @@ fn main() {
         Command::Slot { index } => (display::slot(&state, index), false),
         Command::BuySlot { index } => {
             engine::buy_slot(&mut state, index);
+            (display::show(&state), true)
+        }
+        Command::Reset => {
+            state = Default::default();
             (display::show(&state), true)
         }
     };

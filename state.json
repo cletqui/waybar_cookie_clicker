@@ -1,18 +1,8 @@
 {
-  "cookies": 6.2053603935905315,
-  "total_cookies": 686.4445000000003,
-  "last_tick_ms": 1776936656334,
-  "buildings": [
-    {
-      "id": "cursor",
-      "count": 11
-    },
-    {
-      "id": "grandma",
-      "count": 2
-    }
-  ],
-  "upgrades_purchased": [
-    "reinforced_clicking"
-  ]
+  "cookies": 0.0,
+  "total_cookies": 0.0,
+  "last_tick_ms": 0,
+  "buildings": [],
+  "upgrades_purchased": []
 }
+

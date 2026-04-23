@@ -36,17 +36,23 @@ pub fn show(state: &GameState) -> String {
         for def in &owned {
             let count = state.building_count(def.id);
             let mut mult = 1.0f64;
-            for u in upgrade_defs.iter().filter(|u| state.upgrades_purchased.contains(u.id)) {
-                if let Effect::BuildingMultiplier { id, factor } = &u.effect {
-                    if *id == def.id {
-                        mult *= factor;
-                    }
+            for u in upgrade_defs
+                .iter()
+                .filter(|u| state.upgrades_purchased.contains(u.id))
+            {
+                if let Effect::BuildingMultiplier { id, factor } = &u.effect
+                    && *id == def.id
+                {
+                    mult *= factor;
                 }
             }
             let bld_cps = def.base_cps * count as f64 * mult;
             tip.push_str(&format!(
                 "\n{} {} x{}  ({}/s)",
-                def.icon, def.name, count, format::cookies(bld_cps)
+                def.icon,
+                def.name,
+                count,
+                format::cookies(bld_cps)
             ));
         }
     }
@@ -89,7 +95,12 @@ pub fn slot(state: &GameState, index: usize) -> String {
             };
             // Upgrades only appear when affordable — always show as "affordable"
             let text = format!("{} {}", def.icon, format::cookies(*cost));
-            let tip = format!("{}\nCost: {} 🍪\n{}", def.name, format::cookies(*cost), def.description);
+            let tip = format!(
+                "{}\nCost: {} 🍪\n{}",
+                def.name,
+                format::cookies(*cost),
+                def.description
+            );
             format!(
                 r#"{{"text":"{}","tooltip":"{}","class":"affordable"}}"#,
                 json_str(&text),
@@ -101,11 +112,18 @@ pub fn slot(state: &GameState, index: usize) -> String {
                 return r#"{"text":""}"#.into();
             };
             let owned = state.building_count(id);
-            let class = if *cost <= state.cookies { "affordable" } else { "locked" };
+            let class = if *cost <= state.cookies {
+                "affordable"
+            } else {
+                "locked"
+            };
             let text = format!("{} {}", def.icon, format::cookies(*cost));
             let tip = format!(
                 "{} (owned: {})\nCost: {} 🍪\n{}",
-                def.name, owned, format::cookies(*cost), def.description
+                def.name,
+                owned,
+                format::cookies(*cost),
+                def.description
             );
             format!(
                 r#"{{"text":"{}","tooltip":"{}","class":"{}"}}"#,

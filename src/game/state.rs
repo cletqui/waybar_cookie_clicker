@@ -19,6 +19,34 @@ pub struct GameState {
 
 impl GameState {
     pub fn building_count(&self, id: &str) -> u32 {
-        self.buildings.iter().find(|b| b.id == id).map(|b| b.count).unwrap_or(0)
+        self.buildings
+            .iter()
+            .find(|b| b.id == id)
+            .map(|b| b.count)
+            .unwrap_or(0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn building_count_zero_when_absent() {
+        let state = GameState::default();
+        assert_eq!(state.building_count("cursor"), 0);
+    }
+
+    #[test]
+    fn building_count_returns_owned_count() {
+        let state = GameState {
+            buildings: vec![BuildingState {
+                id: "cursor".into(),
+                count: 5,
+            }],
+            ..Default::default()
+        };
+        assert_eq!(state.building_count("cursor"), 5);
+        assert_eq!(state.building_count("grandma"), 0);
     }
 }

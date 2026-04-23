@@ -164,8 +164,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰳽",
             cost: 1_000.0,
             description: "Cursors are twice as effective",
-            unlock: UnlockCondition::OwnBuilding { id: "cursor", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "cursor", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "cursor",
+                min: 1,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "cursor",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "cursor_2",
@@ -173,8 +179,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰳽",
             cost: 10_000.0,
             description: "Cursors are twice as effective",
-            unlock: UnlockCondition::OwnBuilding { id: "cursor", min: 10 },
-            effect: Effect::BuildingMultiplier { id: "cursor", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "cursor",
+                min: 10,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "cursor",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "cursor_3",
@@ -182,8 +194,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰳽",
             cost: 100_000.0,
             description: "Cursors are twice as effective",
-            unlock: UnlockCondition::OwnBuilding { id: "cursor", min: 25 },
-            effect: Effect::BuildingMultiplier { id: "cursor", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "cursor",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "cursor",
+                factor: 2.0,
+            },
         },
         // ── Grandma upgrades ──────────────────────────────────────────────
         UpgradeDef {
@@ -192,8 +210,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰜥",
             cost: 1_000.0,
             description: "Grandmas are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "grandma", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "grandma", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "grandma",
+                min: 1,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "grandma",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "grandma_2",
@@ -201,8 +225,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰜥",
             cost: 5_000.0,
             description: "Grandmas are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "grandma", min: 5 },
-            effect: Effect::BuildingMultiplier { id: "grandma", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "grandma",
+                min: 5,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "grandma",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "grandma_3",
@@ -210,8 +240,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰜥",
             cost: 50_000.0,
             description: "Grandmas are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "grandma", min: 25 },
-            effect: Effect::BuildingMultiplier { id: "grandma", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "grandma",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "grandma",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "grandma_4",
@@ -219,8 +255,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󰜥",
             cost: 500_000.0,
             description: "Grandmas are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "grandma", min: 50 },
-            effect: Effect::BuildingMultiplier { id: "grandma", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "grandma",
+                min: 50,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "grandma",
+                factor: 2.0,
+            },
         },
         // ── Farm upgrades ─────────────────────────────────────────────────
         UpgradeDef {
@@ -230,7 +272,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 11_000.0,
             description: "Farms are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "farm", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "farm", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "farm",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "farm_2",
@@ -239,7 +284,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 55_000.0,
             description: "Farms are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "farm", min: 5 },
-            effect: Effect::BuildingMultiplier { id: "farm", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "farm",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "farm_3",
@@ -247,8 +295,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󱢲",
             cost: 550_000.0,
             description: "Farms are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "farm", min: 25 },
-            effect: Effect::BuildingMultiplier { id: "farm", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "farm",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "farm",
+                factor: 2.0,
+            },
         },
         // ── Mine upgrades ─────────────────────────────────────────────────
         UpgradeDef {
@@ -258,7 +312,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 130_000.0,
             description: "Mines are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "mine", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "mine", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "mine",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "mine_2",
@@ -267,7 +324,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 650_000.0,
             description: "Mines are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "mine", min: 5 },
-            effect: Effect::BuildingMultiplier { id: "mine", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "mine",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "mine_3",
@@ -275,8 +335,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󱇪",
             cost: 6_500_000.0,
             description: "Mines are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "mine", min: 25 },
-            effect: Effect::BuildingMultiplier { id: "mine", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "mine",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "mine",
+                factor: 2.0,
+            },
         },
         // ── Factory upgrades ──────────────────────────────────────────────
         UpgradeDef {
@@ -285,8 +351,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󱏛",
             cost: 1_300_000.0,
             description: "Factories are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "factory", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "factory", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "factory",
+                min: 1,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "factory",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "factory_2",
@@ -294,8 +366,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󱏛",
             cost: 6_500_000.0,
             description: "Factories are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "factory", min: 5 },
-            effect: Effect::BuildingMultiplier { id: "factory", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "factory",
+                min: 5,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "factory",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "factory_3",
@@ -303,8 +381,14 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             icon: "󱏛",
             cost: 65_000_000.0,
             description: "Factories are twice as productive",
-            unlock: UnlockCondition::OwnBuilding { id: "factory", min: 25 },
-            effect: Effect::BuildingMultiplier { id: "factory", factor: 2.0 },
+            unlock: UnlockCondition::OwnBuilding {
+                id: "factory",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "factory",
+                factor: 2.0,
+            },
         },
         // ── Bank upgrades ─────────────────────────────────────────────────
         UpgradeDef {
@@ -314,7 +398,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 14_000_000.0,
             description: "Banks are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "bank", min: 1 },
-            effect: Effect::BuildingMultiplier { id: "bank", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "bank",
+                factor: 2.0,
+            },
         },
         UpgradeDef {
             id: "bank_2",
@@ -323,7 +410,10 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             cost: 70_000_000.0,
             description: "Banks are twice as productive",
             unlock: UnlockCondition::OwnBuilding { id: "bank", min: 5 },
-            effect: Effect::BuildingMultiplier { id: "bank", factor: 2.0 },
+            effect: Effect::BuildingMultiplier {
+                id: "bank",
+                factor: 2.0,
+            },
         },
         // ── Global upgrades ───────────────────────────────────────────────
         UpgradeDef {
@@ -345,4 +435,57 @@ pub fn upgrades() -> Vec<UpgradeDef> {
             effect: Effect::AllCpsMultiplier(1.1),
         },
     ]
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn building_ids_are_unique() {
+        let ids: Vec<_> = buildings().iter().map(|b| b.id).collect();
+        let mut seen = std::collections::HashSet::new();
+        for id in &ids {
+            assert!(seen.insert(*id), "duplicate building id: {id}");
+        }
+    }
+
+    #[test]
+    fn upgrade_ids_are_unique() {
+        let ids: Vec<_> = upgrades().iter().map(|u| u.id).collect();
+        let mut seen = std::collections::HashSet::new();
+        for id in &ids {
+            assert!(seen.insert(*id), "duplicate upgrade id: {id}");
+        }
+    }
+
+    #[test]
+    fn next_cost_first_purchase_equals_base() {
+        let cursor = buildings().into_iter().find(|b| b.id == "cursor").unwrap();
+        assert_eq!(cursor.next_cost(0), cursor.base_cost);
+    }
+
+    #[test]
+    fn next_cost_scales_by_1_15() {
+        let cursor = buildings().into_iter().find(|b| b.id == "cursor").unwrap();
+        let expected = cursor.base_cost * 1.15;
+        assert!((cursor.next_cost(1) - expected).abs() < 0.001);
+    }
+
+    #[test]
+    fn all_eight_buildings_present() {
+        let ids: std::collections::HashSet<_> = buildings().iter().map(|b| b.id).collect();
+        for expected in [
+            "cursor",
+            "grandma",
+            "farm",
+            "mine",
+            "factory",
+            "bank",
+            "temple",
+            "wizard_tower",
+        ] {
+            assert!(ids.contains(expected), "missing building: {expected}");
+        }
+    }
 }

@@ -17,7 +17,13 @@ pub enum Command {
     Show,
     Click,
     /// Output waybar JSON for the Nth slot (buildings + upgrades)
-    Slot { index: usize },
+    Slot {
+        index: usize,
+    },
     /// Buy whatever is in the Nth slot
-    BuySlot { index: usize },
+    BuySlot {
+        index: usize,
+    },
+    /// Wipe all progress and start over
+    Reset,
 }

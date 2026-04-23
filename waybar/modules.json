@@ -22,6 +22,7 @@
     "exec": "$HOME/.config/waybar/cookie-clicker/run.sh show",
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh click; pkill -SIGRTMIN+9 waybar",
+    "on-click-middle": "$HOME/.config/waybar/cookie-clicker/run.sh reset; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
     "interval": 5,
     "signal": 9

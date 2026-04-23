@@ -90,13 +90,13 @@ pkill waybar && waybar &
 
 ## Usage
 
-| Action | How |
-|--------|-----|
-| Earn a cookie | Left-click the `󰆘` button |
-| See buildings / CPS | Hover the `󰆘` button (tooltip) |
-| Open buy panel | Hover the `󰆘` button (group expands) |
-| Buy a building or upgrade | Left-click a slot in the panel |
-| Reset progress | `rm state.json` |
+| Action                    | How                                  |
+| ------------------------- | ------------------------------------ |
+| Earn a cookie             | Left-click the `󰆘` button            |
+| See buildings / CPS       | Hover the `󰆘` button (tooltip)       |
+| Open buy panel            | Hover the `󰆘` button (group expands) |
+| Buy a building or upgrade | Left-click a slot in the panel       |
+| Reset progress            | `rm state.json`                      |
 
 ---
 
@@ -107,7 +107,7 @@ pkill waybar && waybar &
 Each building produces cookies per second (CPS). Buying more of the same building raises its cost by **1.15×** per unit owned.
 
 | Building     | Base cost   | Base CPS |
-|-------------|-------------|----------|
+| ------------ | ----------- | -------- |
 | Cursor       | 15          | 0.1/s    |
 | Grandma      | 100         | 0.5/s    |
 | Farm         | 1,100       | 4/s      |

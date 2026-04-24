@@ -96,7 +96,7 @@ pkill waybar && waybar &
 | See buildings / CPS       | Hover the `󰆘` button (tooltip)       |
 | Open buy panel            | Hover the `󰆘` button (group expands) |
 | Buy a building or upgrade | Left-click a slot in the panel       |
-| Reset progress            | `rm state.json`                      |
+| Reset all progress        | Middle-click the `󰆘` button          |
 
 ---
 
@@ -146,6 +146,7 @@ Commands:
   click            Earn cookies_per_click cookies
   slot <N>         Output waybar JSON for slot N (0-indexed)
   buy-slot <N>     Purchase the item in slot N
+  reset            Wipe all progress and start over
 ```
 
 `--state` defaults to `~/.local/share/waybar_cookie_clicker/state.json` when called directly. The `waybar/run.sh` wrapper always passes the repo's `state.json`.

@@ -151,6 +151,33 @@ fn is_unlocked(upg: &defs::UpgradeDef, state: &GameState, click_upgrades_bought:
     }
 }
 
+pub fn buy_slot(state: &mut GameState, index: usize) {
+    let slots = available_slots(state);
+    let Some(slot) = slots.get(index) else {
+        return;
+    };
+    match slot {
+        SlotItem::Upgrade { id, cost } => {
+            if state.cookies >= *cost {
+                state.cookies -= cost;
+                state.upgrades_purchased.insert(id.clone());
+            }
+        }
+        SlotItem::Building { id, cost } => {
+            if state.cookies >= *cost {
+                state.cookies -= cost;
+                match state.buildings.iter_mut().find(|b| &b.id == id) {
+                    Some(b) => b.count += 1,
+                    None => state.buildings.push(BuildingState {
+                        id: id.clone(),
+                        count: 1,
+                    }),
+                }
+            }
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -371,32 +398,5 @@ mod tests {
         let mut state = state_with_cookies(100.0); // reinforced_clicking costs 100
         buy_slot(&mut state, 0); // slot 0 = reinforced_clicking (cheapest available)
         assert!(state.upgrades_purchased.contains("reinforced_clicking"));
-    }
-}
-
-pub fn buy_slot(state: &mut GameState, index: usize) {
-    let slots = available_slots(state);
-    let Some(slot) = slots.get(index) else {
-        return;
-    };
-    match slot {
-        SlotItem::Upgrade { id, cost } => {
-            if state.cookies >= *cost {
-                state.cookies -= cost;
-                state.upgrades_purchased.insert(id.clone());
-            }
-        }
-        SlotItem::Building { id, cost } => {
-            if state.cookies >= *cost {
-                state.cookies -= cost;
-                match state.buildings.iter_mut().find(|b| &b.id == id) {
-                    Some(b) => b.count += 1,
-                    None => state.buildings.push(BuildingState {
-                        id: id.clone(),
-                        count: 1,
-                    }),
-                }
-            }
-        }
     }
 }

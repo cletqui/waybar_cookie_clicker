@@ -1,8 +1,12 @@
 {
-  "cookies": 0.0,
-  "total_cookies": 0.0,
-  "last_tick_ms": 0,
-  "buildings": [],
+  "cookies": 31.71492343750001,
+  "total_cookies": 163.021,
+  "last_tick_ms": 1784130829268,
+  "buildings": [
+    {
+      "id": "cursor",
+      "count": 6
+    }
+  ],
   "upgrades_purchased": []
 }
-

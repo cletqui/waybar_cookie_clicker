@@ -9,7 +9,7 @@ Click the cookie button to earn cookies. Hover over it to reveal an expandable p
 ## Features
 
 - **8 buildings** — Cursor, Grandma, Farm, Mine, Factory, Bank, Temple, Wizard Tower — each buyable multiple times with 1.15× cost scaling
-- **26 upgrades** — per-building doublers (up to 4 tiers each) and a 5-tier click power chain
+- **32 upgrades** — per-building doublers (up to 4 tiers each, every building included) and a 5-tier click power chain
 - **Passive CPS** — income accumulates based on real elapsed time (unix timestamps, survives suspend, capped at 8 h offline)
 - **Progressive reveal** — slots stay hidden until you can actually afford an item; no spoilers
 - **Expandable slot panel** — hover the cookie button to reveal up to 8 slots; affordable items glow, empty slots collapse automatically

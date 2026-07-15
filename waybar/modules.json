@@ -24,7 +24,7 @@
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh click; pkill -SIGRTMIN+9 waybar",
     "on-click-middle": "$HOME/.config/waybar/cookie-clicker/run.sh reset; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9
   },
   "custom/cookie-s0": {
@@ -32,7 +32,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 0; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -41,7 +41,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 1; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -50,7 +50,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 2; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -59,7 +59,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 3; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -68,7 +68,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 4; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -77,7 +77,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 5; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -86,7 +86,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 6; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   },
@@ -95,7 +95,7 @@
     "exec-on-event": true,
     "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 7; pkill -SIGRTMIN+9 waybar",
     "return-type": "json",
-    "interval": 5,
+    "interval": 1,
     "signal": 9,
     "hide-empty-text": true
   }

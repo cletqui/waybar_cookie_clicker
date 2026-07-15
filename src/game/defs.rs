@@ -415,6 +415,113 @@ pub fn upgrades() -> Vec<UpgradeDef> {
                 factor: 2.0,
             },
         },
+        UpgradeDef {
+            id: "bank_3",
+            name: "Acid-proof vaults",
+            icon: "󰷕",
+            cost: 700_000_000.0,
+            description: "Banks are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "bank",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "bank",
+                factor: 2.0,
+            },
+        },
+        // ── Temple upgrades ───────────────────────────────────────────────
+        UpgradeDef {
+            id: "temple_1",
+            name: "Golden idols",
+            icon: "󰠮",
+            cost: 200_000_000.0,
+            description: "Temples are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "temple",
+                min: 1,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "temple",
+                factor: 2.0,
+            },
+        },
+        UpgradeDef {
+            id: "temple_2",
+            name: "Sacrifices",
+            icon: "󰠮",
+            cost: 1_000_000_000.0,
+            description: "Temples are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "temple",
+                min: 5,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "temple",
+                factor: 2.0,
+            },
+        },
+        UpgradeDef {
+            id: "temple_3",
+            name: "Consecrated ground",
+            icon: "󰠮",
+            cost: 10_000_000_000.0,
+            description: "Temples are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "temple",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "temple",
+                factor: 2.0,
+            },
+        },
+        // ── Wizard Tower upgrades ─────────────────────────────────────────
+        UpgradeDef {
+            id: "wizard_tower_1",
+            name: "Pointier hats",
+            icon: "󱏕",
+            cost: 3_300_000_000.0,
+            description: "Wizard Towers are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "wizard_tower",
+                min: 1,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "wizard_tower",
+                factor: 2.0,
+            },
+        },
+        UpgradeDef {
+            id: "wizard_tower_2",
+            name: "Beardier wizards",
+            icon: "󱏕",
+            cost: 16_500_000_000.0,
+            description: "Wizard Towers are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "wizard_tower",
+                min: 5,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "wizard_tower",
+                factor: 2.0,
+            },
+        },
+        UpgradeDef {
+            id: "wizard_tower_3",
+            name: "Arcane grimoires",
+            icon: "󱏕",
+            cost: 165_000_000_000.0,
+            description: "Wizard Towers are twice as productive",
+            unlock: UnlockCondition::OwnBuilding {
+                id: "wizard_tower",
+                min: 25,
+            },
+            effect: Effect::BuildingMultiplier {
+                id: "wizard_tower",
+                factor: 2.0,
+            },
+        },
         // ── Global upgrades ───────────────────────────────────────────────
         UpgradeDef {
             id: "global_1",
@@ -470,6 +577,23 @@ mod tests {
         let cursor = buildings().into_iter().find(|b| b.id == "cursor").unwrap();
         let expected = cursor.base_cost * 1.15;
         assert!((cursor.next_cost(1) - expected).abs() < 0.001);
+    }
+
+    #[test]
+    fn every_building_has_at_least_three_upgrade_tiers() {
+        let all_upgrades = upgrades();
+        for b in buildings() {
+            let tiers = all_upgrades
+                .iter()
+                .filter(|u| matches!(u.effect, Effect::BuildingMultiplier { id, .. } if id == b.id))
+                .count();
+            assert!(
+                tiers >= 3,
+                "building '{}' has only {} upgrade tier(s), expected at least 3",
+                b.id,
+                tiers
+            );
+        }
     }
 
     #[test]

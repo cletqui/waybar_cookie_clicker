@@ -14,7 +14,7 @@ Click the cookie button to earn cookies. Hover over it to reveal an expandable p
 - **Progressive reveal** — slots stay hidden until you can actually afford an item; no spoilers
 - **Expandable slot panel** — hover the cookie button to reveal up to 8 slots; affordable items glow, empty slots collapse automatically
 - **Instant refresh** — one long-running watcher per module picks up clicks and purchases within ~100 ms, with no process respawning
-- **Save file in repo** — `state.json` lives next to the code for easy backup
+- **Save file in repo** — `state.json` lives next to the code for easy backup (gitignored, so clones start fresh)
 
 ---
 

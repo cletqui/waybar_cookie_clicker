@@ -13,7 +13,7 @@ Click the cookie button to earn cookies. Hover over it to reveal an expandable p
 - **Passive CPS** — income accumulates based on real elapsed time (unix timestamps, survives suspend, capped at 8 h offline)
 - **Progressive reveal** — slots stay hidden until you can actually afford an item; no spoilers
 - **Expandable slot panel** — hover the cookie button to reveal up to 8 slots; affordable items glow, empty slots collapse automatically
-- **Instant refresh** — clicks and purchases send SIGRTMIN+9 to waybar so all slots update immediately
+- **Instant refresh** — one long-running watcher per module picks up clicks and purchases within ~100 ms, with no process respawning
 - **Save file in repo** — `state.json` lives next to the code for easy backup
 
 ---
@@ -21,7 +21,7 @@ Click the cookie button to earn cookies. Hover over it to reveal an expandable p
 ## Requirements
 
 - [Rust](https://rustup.rs/) (stable)
-- [waybar](https://github.com/Alexays/Waybar) ≥ 0.9
+- [waybar](https://github.com/Alexays/Waybar) (developed and tested on 0.15)
 - A [Nerd Font](https://www.nerdfonts.com/) (building icons use nerd glyphs)
 
 ---
@@ -76,14 +76,34 @@ In `config.jsonc`, add `"group/group-cookie"` to `modules-right`:
 ]
 ```
 
-### 4. Check the signal number
+### 4. Customise the layout (optional)
 
-`modules.json` uses **signal 9** (SIGRTMIN+9). If that conflicts with another module, change all `"signal": 9` and `SIGRTMIN+9` occurrences to a free number.
+`waybar/modules.json` is generated. Regenerate it with the options you want:
+
+```bash
+./target/release/waybar_cookie_clicker config --direction left --slots 6 --signal 12 > waybar/modules.json
+```
+
+| Option              | Default                                      | Effect                                                         |
+| ------------------- | -------------------------------------------- | -------------------------------------------------------------- |
+| `--direction`       | `right`                                      | Side the panel expands towards (`right` / `left`)              |
+| `--slots`           | `8`                                          | Number of buy slots                                            |
+| `--mode`            | `watch`                                      | `watch`: one long-running process per module, no respawning; `poll`: waybar respawns the binary every interval |
+| `--interval`        | `1`                                          | Button refresh interval in seconds                             |
+| `--slot-interval`   | `1`                                          | Slot refresh interval in seconds                               |
+| `--signal`          | `9`                                          | SIGRTMIN+N used for instant refresh (`poll` mode only)        |
+| `--transition-ms`   | `250`                                        | Drawer animation duration                                      |
+| `--click-to-reveal` | off                                          | Open the panel on click instead of hover                       |
+| `--exec`            | `$HOME/.config/waybar/cookie-clicker/run.sh` | Launcher path as waybar should call it                         |
+
+In `watch` mode each module runs `--watch` once: it re-reads the save when the file changes (so clicks show up within ~100 ms) and otherwise every `--interval` seconds, printing only when the output changed. Watchers exit when waybar goes away. No signals are involved.
+
+Styling uses the classes `.cookie-button`, `.cookie-slot`, `.affordable`, `.locked` and `.has-upgrade`; override them in your own `style.css`.
 
 ### 5. Reload waybar
 
 ```bash
-pkill waybar && waybar &
+pkill -x waybar; waybar &
 ```
 
 ---
@@ -139,12 +159,13 @@ Ordering: cheapest affordable items first, then owned buildings by next-purchase
 ## CLI reference
 
 ```
-waybar_cookie_clicker [--state <path>] <command>
+waybar_cookie_clicker [--state <path>] [--watch [--every <secs>]] <command>
 
 Commands:
   show             Output waybar JSON for the main cookie button
   click            Earn cookies_per_click cookies
   slot <N>         Output waybar JSON for slot N (0-indexed)
+  config [opts]    Print waybar module definitions for a layout
   buy-slot <N>     Purchase the item in slot N
   reset            Wipe all progress and start over
 ```
@@ -155,10 +176,17 @@ Commands:
 
 ## Adding buildings / upgrades
 
-Buildings and upgrades are defined in `src/game/defs.rs`. See CLAUDE.md for full field documentation. After adding entries, run `cargo build --release` — no other files need changing.
+Buildings and upgrades are defined in `src/game/defs.rs`. See the doc comments on the definition structs there for the fields. After adding entries, run `cargo build --release` — no other files need changing.
 
 ---
 
 ## License
 
 MIT
+
+## Development
+
+```bash
+cargo test
+cargo clippy --all-targets -- -D warnings
+```

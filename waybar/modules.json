@@ -1,10 +1,63 @@
 {
+  "custom/cookie-clicker": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 show",
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh click",
+    "on-click-middle": "$HOME/.config/waybar/cookie-clicker/run.sh reset",
+    "return-type": "json"
+  },
+  "custom/cookie-s0": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 0",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 0",
+    "return-type": "json"
+  },
+  "custom/cookie-s1": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 1",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 1",
+    "return-type": "json"
+  },
+  "custom/cookie-s2": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 2",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 2",
+    "return-type": "json"
+  },
+  "custom/cookie-s3": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 3",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 3",
+    "return-type": "json"
+  },
+  "custom/cookie-s4": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 4",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 4",
+    "return-type": "json"
+  },
+  "custom/cookie-s5": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 5",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 5",
+    "return-type": "json"
+  },
+  "custom/cookie-s6": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 6",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 6",
+    "return-type": "json"
+  },
+  "custom/cookie-s7": {
+    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh --watch --every 1 slot 7",
+    "hide-empty-text": true,
+    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 7",
+    "return-type": "json"
+  },
   "group/group-cookie": {
-    "orientation": "horizontal",
     "drawer": {
+      "click-to-reveal": false,
       "transition-duration": 250,
-      "transition-left-to-right": false,
-      "click-to-reveal": false
+      "transition-left-to-right": true
     },
     "modules": [
       "custom/cookie-clicker",
@@ -16,87 +69,7 @@
       "custom/cookie-s5",
       "custom/cookie-s6",
       "custom/cookie-s7"
-    ]
-  },
-  "custom/cookie-clicker": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh show",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh click; pkill -SIGRTMIN+9 waybar",
-    "on-click-middle": "$HOME/.config/waybar/cookie-clicker/run.sh reset; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9
-  },
-  "custom/cookie-s0": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 0",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 0; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s1": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 1",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 1; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s2": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 2",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 2; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s3": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 3",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 3; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s4": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 4",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 4; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s5": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 5",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 5; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s6": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 6",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 6; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
-  },
-  "custom/cookie-s7": {
-    "exec": "$HOME/.config/waybar/cookie-clicker/run.sh slot 7",
-    "exec-on-event": true,
-    "on-click": "$HOME/.config/waybar/cookie-clicker/run.sh buy-slot 7; pkill -SIGRTMIN+9 waybar",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 9,
-    "hide-empty-text": true
+    ],
+    "orientation": "horizontal"
   }
 }

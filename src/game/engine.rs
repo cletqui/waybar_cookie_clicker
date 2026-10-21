@@ -12,7 +12,10 @@ fn now_ms() -> u64 {
 
 /// Apply passive income since the last tick, then update the timestamp.
 pub fn tick(state: &mut GameState) {
-    let now = now_ms();
+    tick_at(state, now_ms());
+}
+
+pub fn tick_at(state: &mut GameState, now: u64) {
     if state.last_tick_ms > 0 {
         let elapsed = (now.saturating_sub(state.last_tick_ms)) as f64 / 1_000.0;
         // Cap offline gain at 8 hours so a long suspension doesn't break the game
@@ -305,6 +308,24 @@ mod tests {
         tick(&mut state);
         let max_gain = 1.0 * 28_800.0;
         assert!(state.cookies <= max_gain + 0.001);
+    }
+
+    #[test]
+    fn tick_at_is_deterministic() {
+        let mut state = state_with_building("cursor", 10);
+        state.last_tick_ms = 1_000;
+        tick_at(&mut state, 6_000);
+        assert!((state.cookies - 5.0).abs() < 1e-9);
+        assert!((state.total_cookies - 5.0).abs() < 1e-9);
+        assert_eq!(state.last_tick_ms, 6_000);
+    }
+
+    #[test]
+    fn tick_at_ignores_clock_going_backwards() {
+        let mut state = state_with_building("cursor", 10);
+        state.last_tick_ms = 6_000;
+        tick_at(&mut state, 1_000);
+        assert_eq!(state.cookies, 0.0);
     }
 
     // ── available_slots ────────────────────────────────────────────────────────

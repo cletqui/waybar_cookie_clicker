@@ -68,10 +68,14 @@ pub fn show(state: &GameState) -> String {
     } else {
         format!("󰆘 {}", format::cookies(state.cookies))
     };
-    let class = if has_upgrade { "has-upgrade" } else { "" };
+    let class = if has_upgrade {
+        r#"["cookie-button","has-upgrade"]"#
+    } else {
+        r#"["cookie-button"]"#
+    };
 
     format!(
-        r#"{{"text":"{}","tooltip":"{}","class":"{}"}}"#,
+        r#"{{"text":"{}","tooltip":"{}","class":{}}}"#,
         json_str(&text),
         json_str(&tip),
         class
@@ -102,7 +106,7 @@ pub fn slot(state: &GameState, index: usize) -> String {
                 def.description
             );
             format!(
-                r#"{{"text":"{}","tooltip":"{}","class":"affordable"}}"#,
+                r#"{{"text":"{}","tooltip":"{}","class":["cookie-slot","affordable"]}}"#,
                 json_str(&text),
                 json_str(&tip),
             )
@@ -113,9 +117,9 @@ pub fn slot(state: &GameState, index: usize) -> String {
             };
             let owned = state.building_count(id);
             let class = if *cost <= state.cookies {
-                "affordable"
+                r#"["cookie-slot","affordable"]"#
             } else {
-                "locked"
+                r#"["cookie-slot","locked"]"#
             };
             let text = format!("{} {}", def.icon, format::cookies(*cost));
             let tip = format!(
@@ -126,11 +130,119 @@ pub fn slot(state: &GameState, index: usize) -> String {
                 def.description
             );
             format!(
-                r#"{{"text":"{}","tooltip":"{}","class":"{}"}}"#,
+                r#"{{"text":"{}","tooltip":"{}","class":{}}}"#,
                 json_str(&text),
                 json_str(&tip),
                 class
             )
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::game::state::BuildingState;
+    use serde_json::Value;
+
+    fn parse(s: &str) -> Value {
+        serde_json::from_str(s).expect("valid json")
+    }
+
+    fn classes(v: &Value) -> Vec<&str> {
+        v["class"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|c| c.as_str().unwrap())
+            .collect()
+    }
+
+    fn rich(cookies: f64) -> GameState {
+        GameState {
+            cookies,
+            total_cookies: cookies,
+            ..Default::default()
+        }
+    }
+
+    #[test]
+    fn json_str_escapes_specials() {
+        assert_eq!(json_str("a\"b\\c\nd\te"), "a\\\"b\\\\c\\nd\\te");
+    }
+
+    #[test]
+    fn show_with_no_cookies_is_icon_only() {
+        let v = parse(&show(&GameState::default()));
+        assert_eq!(v["text"], "󰆘");
+        assert_eq!(classes(&v), ["cookie-button"]);
+    }
+
+    #[test]
+    fn show_includes_count_and_stats_in_tooltip() {
+        let v = parse(&show(&rich(1500.0)));
+        assert_eq!(v["text"], "󰆘 1.5k");
+        let tip = v["tooltip"].as_str().unwrap();
+        assert!(tip.contains("1.5k cookies"));
+        assert!(tip.contains("/sec"));
+        assert!(tip.contains("/click"));
+    }
+
+    #[test]
+    fn show_flags_has_upgrade_when_an_upgrade_is_affordable() {
+        let v = parse(&show(&rich(100.0)));
+        assert_eq!(classes(&v), ["cookie-button", "has-upgrade"]);
+    }
+
+    #[test]
+    fn show_lists_owned_buildings_with_boosted_cps() {
+        let mut state = GameState {
+            buildings: vec![BuildingState {
+                id: "cursor".into(),
+                count: 10,
+            }],
+            ..Default::default()
+        };
+        state.upgrades_purchased.insert("cursor_1".into());
+        let tip = parse(&show(&state))["tooltip"]
+            .as_str()
+            .unwrap()
+            .to_string();
+        assert!(tip.contains("Cursor x10"));
+        assert!(tip.contains("(2/s)"));
+    }
+
+    #[test]
+    fn out_of_range_slot_is_empty() {
+        let v = parse(&slot(&GameState::default(), 0));
+        assert_eq!(v["text"], "");
+    }
+
+    #[test]
+    fn affordable_building_slot() {
+        let v = parse(&slot(&rich(15.0), 0));
+        assert_eq!(classes(&v), ["cookie-slot", "affordable"]);
+        assert!(v["text"].as_str().unwrap().ends_with("15"));
+        assert!(v["tooltip"].as_str().unwrap().contains("Cursor (owned: 0)"));
+    }
+
+    #[test]
+    fn owned_but_unaffordable_building_is_locked() {
+        let state = GameState {
+            buildings: vec![BuildingState {
+                id: "cursor".into(),
+                count: 1,
+            }],
+            ..Default::default()
+        };
+        let v = parse(&slot(&state, 0));
+        assert_eq!(classes(&v), ["cookie-slot", "locked"]);
+    }
+
+    #[test]
+    fn upgrade_slot_comes_first_and_is_affordable() {
+        let v = parse(&slot(&rich(100.0), 0));
+        assert_eq!(classes(&v), ["cookie-slot", "affordable"]);
+        assert!(v["tooltip"].as_str().unwrap().contains("Cost: 100"));
     }
 }
